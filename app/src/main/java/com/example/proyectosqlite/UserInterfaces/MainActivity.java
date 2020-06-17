@@ -3,31 +3,19 @@ package com.example.proyectosqlite.UserInterfaces;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.proyectosqlite.Adapter.MyAdapter;
-import com.example.proyectosqlite.Config.Constants;
-import com.example.proyectosqlite.Database.AppDatabase;
-import com.example.proyectosqlite.Datos.Datos;
+import com.example.proyectosqlite.Datos.SignatureInf;
 import com.example.proyectosqlite.Entities.Asignatura;
 import com.example.proyectosqlite.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
 
-    Datos list;
+    SignatureInf list;
 
     Button btAdd;
 
@@ -44,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        list = new Datos(this.getApplicationContext());
+        list = new SignatureInf(this.getApplicationContext());
 
         btAdd = findViewById(R.id.btAdd);
         mRecyclerView = findViewById(R.id.recycleview1);

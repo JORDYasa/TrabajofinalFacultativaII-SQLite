@@ -12,11 +12,11 @@ import com.example.proyectosqlite.Entities.Asignatura;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Datos {
+public class SignatureInf {
     public static List<Asignatura> asignaturas = new ArrayList<Asignatura>();
     public static AppDatabase db = null;
     
-    public Datos(Context c) {
+    public SignatureInf(Context c) {
         if(db == null) {
             db = Room.databaseBuilder(c, AppDatabase.class, Constants.BD_NAME)
                 .allowMainThreadQueries()

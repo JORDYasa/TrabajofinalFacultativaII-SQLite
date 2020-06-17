@@ -7,32 +7,25 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.proyectosqlite.Config.Constants;
-import com.example.proyectosqlite.Database.AppDatabase;
-import com.example.proyectosqlite.Datos.Datos;
+import com.example.proyectosqlite.Datos.SignatureInf;
 import com.example.proyectosqlite.Entities.Asignatura;
 import com.example.proyectosqlite.Holder.MyHolder;
 import com.example.proyectosqlite.R;
-import com.example.proyectosqlite.UserInterfaces.MainActivity;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     Context c;
-    Datos list = null;
+    SignatureInf list = null;
 
 
-    public MyAdapter(Context c, Datos list) {
+    public MyAdapter(Context c, SignatureInf list) {
         this.c=c;
         this.list = list;
     }
@@ -50,8 +43,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, final int position) {
-        holder.mTitle.setText(Datos.asignaturas.get(position).getTitle());
-        holder.mDescription.setText(Datos.asignaturas.get(position).getDescription());
+        holder.mTitle.setText(SignatureInf.asignaturas.get(position).getTitle());
+        holder.mDescription.setText(SignatureInf.asignaturas.get(position).getDescription());
 
         holder.setCreateContextMenu(new View.OnCreateContextMenuListener() {
             @Override
@@ -63,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                     try {
-                        Asignatura current = Datos.asignaturas.get(position);
+                        Asignatura current = SignatureInf.asignaturas.get(position);
                         list.eliminar(current.getId());
                         Toast.makeText(c, "Se ha eliminado con exito", Toast.LENGTH_SHORT).show();
                         notifyChanged();
@@ -91,7 +84,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                         final EditText editText_Nombreasig = (EditText) dlg.findViewById(R.id.editText_Name);
                         final EditText editText_Descrip = (EditText) dlg.findViewById(R.id.editText_Desc);
 
-                        final Asignatura current = Datos.asignaturas.get(position);
+                        final Asignatura current = SignatureInf.asignaturas.get(position);
                         editText_Nombreasig.setText(current.getTitle());
                         editText_Descrip.setText(current.getDescription());
 
@@ -147,7 +140,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public int getItemCount() {
-        return Datos.asignaturas.size();
+        return SignatureInf.asignaturas.size();
     }
 
 }
